@@ -10,7 +10,8 @@ ENV PATH $PYENV_ROOT/bin:$PATH
 
 # package‚Ì’Ç‰Á
 RUN apt update -y  
-RUN apt install -y gcc git curl make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl openssl-devel
+RUN apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev bzip2 zlib1g
+# RUN apt install -y gcc git curl make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl openssl-devel
 
 
 # pyenv‚Ì“±“ü
