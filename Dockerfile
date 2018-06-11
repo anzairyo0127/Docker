@@ -2,22 +2,29 @@
 FROM ubuntu:18.04
 MAINTAINER R.A "hogehoge@hogehoge.co.jp"
 
+# PythonVersion指定
+# RUN PYVER=3.6.5
+
 # pyenvの環境変数PATH追加 
 ENV PYENV_ROOT /.pyenv
-ENV PATH $PYENV_ROOT/bin:$PATH
-# pyenv virtualenvオプションPATHの追加
+ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+
+###RUN echo 'export PYENV_ROOT="/.pyenv"' >>  /etc/profile.d/pyenv.sh
+###RUN echo 'export PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"' >> /etc/profile.d/pyenv.sh
+
+# virtualenvの環境変数追加
 # ENV  
 
 # packageの追加
-RUN apt update -y  
-RUN apt install -y git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev bzip2 zlib1g
-# RUN apt install -y gcc git curl make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl openssl-devel
-
+RUN apt update -y && apt install -y wget curl git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev bzip2 zlib1g build-essential checkinstall mercurial unzip zlib1g-dev llvm 
 
 # pyenvの導入
 RUN git clone git://github.com/yyuu/pyenv.git /.pyenv
 
-# pyenv python3.6.5をダウンロード
+### source実行
+###RUN source /etc/profile.d/pyenv.sh
+
+# pyenv pythonダウンロード
 RUN pyenv install 3.6.5
 
 # virtualenvの導入
