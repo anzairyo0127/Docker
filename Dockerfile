@@ -39,3 +39,6 @@ RUN pyenv local appflask
 RUN pip install -U pip
 RUN pip install Flask
 
+# containeré¿çsÇÃcommand
+CMD python /pytest/hello.py
+
