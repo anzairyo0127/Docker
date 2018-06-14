@@ -29,24 +29,14 @@ ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 # package‚Ì’Ç‰Á
 RUN apt update -y && \
     apt install -y \
-    build-essential \
-    bzip2 \
-    zlib1g \
-    checkinstall \
-    curl \
     gcc \
     git \
     libbz2-dev \
     libreadline-dev \
     libsqlite3-dev \
     libssl-dev \
-    llvm \
     make \
-    mercurial \
     openssl \
-    unzip \
-    wget \
-    zlib1g-dev
 
 # pyenv‚Ì“±“ü
 RUN git clone git://github.com/yyuu/pyenv.git ${pyenvpath}
