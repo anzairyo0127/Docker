@@ -8,21 +8,24 @@ ARG version="3.6.5"
 # 環境名（マウント用のDirectoryの名前）
 ARG envi="pytest"
 
+# Command"pyenv"のPATHの値
+ARG pyenvpath="/.pyenv"
+
 # pyenvの環境変数PATH追加 
-ENV PYENV_ROOT /.pyenv
+ENV PYENV_ROOT ${pyenvpath}
 ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
 # packageの追加
 RUN apt update -y && apt install -y build-essential bzip2 zlib1g checkinstall curl gcc git libbz2-dev libreadline-dev libsqlite3-dev libssl-dev llvm make mercurial openssl unzip wget zlib1g-dev
 
 # pyenvの導入
-RUN git clone git://github.com/yyuu/pyenv.git /.pyenv
+RUN git clone git://github.com/yyuu/pyenv.git ${pyenvpath}
 
 # pyenv pythonダウンロード
 RUN pyenv install ${version}
 
 # virtualenvの導入
-RUN git clone https://github.com/yyuu/pyenv-virtualenv.git /.pyenv/plugins/pyenv-virtualenv
+RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ${pyenvpath}/plugins/pyenv-virtualenv
 
 # マウントディレクトリの作成
 RUN mkdir /${envi}
@@ -39,6 +42,9 @@ RUN pyenv local appflask
 RUN pip install -U pip
 RUN pip install Flask
 
+# Localとcontainerの領域のマウント実施
+VOLUME ["/C/Users/RyoAnzai/Documents/www","/${envi}"] 
+
 # container実行のcommand
-CMD python /pytest/hello.py
+CMD python /${envi}/hello.py
 
