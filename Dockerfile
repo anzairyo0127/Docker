@@ -30,10 +30,7 @@ RUN git clone git://github.com/yyuu/pyenv.git ${pyenvpath}
 # pyenvに指定Pythonを導入
 RUN pyenv install ${version}
 # pyenv指定Pythonをprojectディレクトリ内で導入
-RUN mkdir /project
-WORKDIR /project
 RUN pyenv local ${version}
-
 
 # virtualenvの導入
 RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ${pyenvpath}/plugins/pyenv-virtualenv
