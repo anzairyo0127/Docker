@@ -9,7 +9,7 @@ MAINTAINER R.A "hogehoge@hogehoge.co.jp"
 ARG version="3.6.5"
 
 # マウントポイント(Ubuntu内の作業先）
-ARG enviwork="/pytest"
+ARG enviwork="/project"
 
 # Command"pyenv"のPATHの値
 ARG pyenvpath="/.pyenv"
@@ -44,5 +44,3 @@ RUN pip install Flask
 # マウントディレクトリの作成
 RUN mkdir /${enviwork}
 
-#テスト用実行
-CMD python -V
