@@ -1,0 +1,10 @@
+version: "3"
+services:
+        web:
+                env_file: .env
+                image: ${WIMAGE}:${WTAG}       
+                ports:
+                 - ${WPORT1}:${WPORT2}
+                volumes:
+                        - ${WHOSTMOUNT}:${WENVIMOUNT}
+                command: ${WCOMMAND}
