@@ -3,13 +3,12 @@ FROM ubuntu:18.04
 
 #---------------------------------------------------#
 # 環境にあわせてここを変更してください
-
 # PythonVersion指定
 ARG version="3.6.5"
-
 # Command"pyenv"のPATHの値
 ARG pyenvpath="/.pyenv"
-
+# FlaskのVersion指定
+ARG fver="1.0.2"
 #---------------------------------------------------#
 
 # pyenvの環境変数PATH追加 
@@ -35,4 +34,4 @@ RUN pyenv virtualenv ${version} appflask
 RUN pyenv local appflask
 # pip更新とflaskの導入
 RUN pip install -U pip
-RUN pip install Flask
+RUN pip install Flask==${fver}
