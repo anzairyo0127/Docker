@@ -13,7 +13,7 @@ Dockerで使用するファイルをアップロードしています。
 
 ### Dockerfileを使ったbuild方法
 
-カレントディレクトリをDockerfileのあるディレクトにした状態で
+カレントディレクトリをDockerfileのあるディレクトリにした状態で
 
 ```docker build -t ****(好きな名前) .```
 
