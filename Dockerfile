@@ -1,40 +1,38 @@
-# ƒCƒ[ƒWuubuntu18.04v“±“ü 
+# ã‚¤ãƒ¡ãƒ¼ã‚¸ã€Œubuntu18.04ã€å°å…¥ 
 FROM ubuntu:18.04
 
 #---------------------------------------------------#
-# ŠÂ‹«‚É‚ ‚í‚¹‚Ä‚±‚±‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢
+# ç’°å¢ƒã«ã‚ã‚ã›ã¦ã“ã“ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„
 
-# PythonVersionw’è
+# PythonVersionæŒ‡å®š
 ARG version="3.6.5"
 
-# Command"pyenv"‚ÌPATH‚Ì’l
+# Command"pyenv"ã®PATHã®å€¤
 ARG pyenvpath="/.pyenv"
 
 #---------------------------------------------------#
 
-# pyenv‚ÌŠÂ‹«•Ï”PATH’Ç‰Á 
+# pyenvã®ç’°å¢ƒå¤‰æ•°PATHè¿½åŠ  
 ENV PYENV_ROOT ${pyenvpath}
 ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
-# Pyenv—ppackage‚Ì’Ç‰Á
+# Pyenvç”¨packageã®è¿½åŠ 
 RUN apt update -y
 RUN apt install -y \
 make build-essential libssl-dev zlib1g-dev libbz2-dev git \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
 libncursesw5-dev xz-utils
-# pyenvAGit‚æ‚èƒ_ƒEƒ“ƒ[ƒh
+# pyenvã€Gitã‚ˆã‚Šãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 RUN git clone git://github.com/yyuu/pyenv.git ${pyenvpath}
-# pyenv‚Éw’èPython‚ğ“±“ü
+# pyenvã«æŒ‡å®šPythonã‚’å°å…¥
 RUN pyenv install ${version}
-# pyenvw’èPython‚ğprojectƒfƒBƒŒƒNƒgƒŠ“à‚Å“±“ü
+# pyenvæŒ‡å®šPythonã‚’projectãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã§å°å…¥
 RUN pyenv local ${version}
 
-# virtualenv‚Ì“±“ü
+# virtualenvã®å°å…¥
 RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ${pyenvpath}/plugins/pyenv-virtualenv
-# flask“±“ü—p
+# flaskå°å…¥ç”¨
 RUN pyenv virtualenv ${version} appflask
 RUN pyenv local appflask
-# pipXV‚Æflask‚Ì“±“ü
+# pipæ›´æ–°ã¨flaskã®å°å…¥
 RUN pip install -U pip
 RUN pip install Flask
-
-
