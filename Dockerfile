@@ -1,15 +1,11 @@
-# イメージ「ubuntu18.04」導入 製作者R.A
+# イメージ「ubuntu18.04」導入 
 FROM ubuntu:18.04
-MAINTAINER R.A "hogehoge@hogehoge.co.jp"
 
 #---------------------------------------------------#
 # 環境にあわせてここを変更してください
 
 # PythonVersion指定
 ARG version="3.6.5"
-
-# マウントポイント(Ubuntu内の作業先）
-ARG enviwork="/project"
 
 # Command"pyenv"のPATHの値
 ARG pyenvpath="/.pyenv"
@@ -41,6 +37,4 @@ RUN pyenv local appflask
 RUN pip install -U pip
 RUN pip install Flask
 
-# マウントディレクトリの作成
-RUN mkdir /${enviwork}
 
