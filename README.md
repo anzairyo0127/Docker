@@ -53,6 +53,19 @@ ARG pyenvpath="/.pyenv"
 
 例`ARG pyenvpath="/ec/.pyenv"`
 
+#### FlaskのVersion指定
+
+```
+# FlaskのVersion指定
+ARG fver="1.0.2"
+```
+
+このDockerfileで導入されるFlaskのVersionを指定することができます。
+
+なお、pipにて導入されます。
+
+FlaskのVer1.0.1を導入したい場合は`ARG fver="1.0.1"`と記載。
+
 
 ## docker-composeの使い方
 
