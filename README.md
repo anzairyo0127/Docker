@@ -1,8 +1,31 @@
-# 追記予定
-クイックスタート
+# クイックスタート
+
+## 編集が必要なところ
+
+`.env.example`を`.env`にリネームすること。
+
+`.env`の中身を編集すること。
+
+## ファイルを置く
+
+`Dockerfile` `docker-compose` `.env.example`を
+
+``c:\users\*****\[好みのディレクトリ名]``以下に置く
 
 
-# Docker物置場
+## Docker Toolboxを起動し、imageとcontainerを作成
+
+`CMD`
+
+```
+cd  c:\users\*****\[好みのディレクトリ名] 
+
+docker-compose up
+
+```
+
+
+# Docker物置
 
 Dockerで使用するファイルをアップロードしています。
 
@@ -12,13 +35,28 @@ Dockerで使用するファイルをアップロードしています。
 
 ## Dockerfileの使い方
 
-### Dockerfileを使ったbuild方法
+Dockerfileはimageを生成するときに使用します。
 
-カレントディレクトリをDockerfileのあるディレクトリにした状態で
+後にdocker-composeにて使用します。
 
-```docker build -t ****(好きな名前) .```
+containerとして使用するLinuxのディストリビューションや、packageなどは
 
-と打ってください。コマンド末のピリオドを忘れずに。
+ここを編集して自分の好みのものを作ってください。
+
+
+なお、Dockerfile単体でimageを生成することも可能です。
+
+カレントディレクトリを`Dockerfileの置いてある場所`にした状態で
+
+以下のcommandを打ってください。
+
+```
+
+docker build -t [image名] .
+
+```
+
+これで生成されます。
 
 ### Dockerfileの編集
 
@@ -69,6 +107,22 @@ FlaskのVer1.0.1を導入したい場合は`ARG fver="1.0.1"`と記載。
 
 ## docker-composeの使い方
 
+docker-composeはcontainerを生成します。
+
+Dockerfileを同じディレクトリに入れておくことで、
+
+Dockerfileを使用してimage生成し、それからcontainerを生成することもできます。
+
+今回はimageをDockerfileで生成するようにしています。
+
+カレントディレクトリをdocker-compose.ymlのある場所にした状態で
+
+``` docker-compose up ```
+
+とコマンドをたたいてください。
+
+
+
 docker-composeはyml形式ですので、メモ帳でもVSCodeでもviでも開けます。
 
 具体的な値は`.env`の変数を変更して使用します。
@@ -83,20 +137,6 @@ docker-composeはyml形式ですので、メモ帳でもVSCodeでもviでも開�
 ## .env.exampleの使い方
 
 docker-composeの中身の変数がこちらに記載されています。
-
-#### WIMAGE
-
-`WIMAGE=name_image`はdockerのコンテナ化の際に使用するimage名を記載してください。
-
-例`WIMAGE=ubuntu`等......
-
-
-#### WTAG
-
-`WTAG=use_tag`は上記imageのタグ部分になります。
-
-例`WTAG=latest`
-
 
 #### WPORT1、WPORT2
 

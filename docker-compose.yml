@@ -2,7 +2,8 @@ version: "3"
 services:
     web:
         env_file: .env
-        image: ${WIMAGE}:${WTAG}       
+        build: .
+#       image: ${WIMAGE}:${WTAG}
         ports:
             - ${WPORT1}:${WPORT2}
         volumes:
