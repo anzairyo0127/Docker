@@ -8,7 +8,7 @@
 
 ## ファイルを置く
 
-`Dockerfile` `docker-compose` `.env.example`を
+`Dockerfile` `docker-compose` `.env`を
 
 ``c:\users\*****\[好みのディレクトリ名]``以下に置く
 
